@@ -1,7 +1,7 @@
 package private
 
 import (
-	"github.com/kanerogers/test_app/test_app"
+	"github.com/kanerogers/test_app/common"
 )
 
 type WelcomeHandler struct {
