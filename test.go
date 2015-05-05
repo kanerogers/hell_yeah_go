@@ -15,7 +15,7 @@ func main() {
 	private_router.Use(jwt.Auth(test_app.JWTKEY))
 
 	private_router.GET("/welcome", func(c *gin.Context) {
-		c.JSON(200, welcome_handler.GetStatus())
+		c.JSON(200, welcome_handler.GetStatus("Bede"))
 	})
 
 	router.Run(":8000")
