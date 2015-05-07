@@ -1,4 +1,4 @@
-package hell_yeah_go
+package common
 
 type Status struct {
 	Status string

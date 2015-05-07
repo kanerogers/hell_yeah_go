@@ -14,12 +14,12 @@ type Listing struct {
 type Handler struct {
 }
 
-func (*Handler) CreateHandler(c *gin.Context) {
+func (*Listing) CreateHandler(c *gin.Context) {
 	fmt.Println("Creating")
 	c.JSON(http.StatusOK, gin.H{"status": "create"})
 }
 
-func (*Handler) TakeHandler(c *gin.Context) {
+func (*Listing) TakeHandler(c *gin.Context) {
 	fmt.Println("Taking")
 	c.JSON(http.StatusOK, gin.H{"status": "take"})
 }

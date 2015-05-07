@@ -14,7 +14,7 @@ func main() {
 	// welcome_handler := new(private.WelcomeHandler)
 
 	private_router := router.Group("/api/private")
-	private_router.Use(jwt.Auth(test_app.JWTKEY))
+	private_router.Use(jwt.Auth(common.JWTKEY))
 
 	// private_router.GET("/welcome", func(c *gin.Context) {
 	// 	c.JSON(200, welcome_handler.GetStatus("Bede"))
