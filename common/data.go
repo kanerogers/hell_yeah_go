@@ -1,4 +1,4 @@
-package test_app
+package hell_yeah_go
 
 type Status struct {
 	Status string

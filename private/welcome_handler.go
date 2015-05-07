@@ -15,7 +15,7 @@ type User struct {
 	LastName  string `json:"last_name"`
 }
 
-func (*WelcomeHandler) GetStatus(name string, user_table Table) test_app.Status {
+func (*WelcomeHandler) GetStatus(name string, user_table Table) hell_yeah_go.Status {
 	// Get user
 	user_key := &dynamodb.Key{HashKey: "abc123"}
 	user := new(User)
@@ -29,5 +29,5 @@ func (*WelcomeHandler) GetStatus(name string, user_table Table) test_app.Status 
 	first_name := user.FirstName
 	greeting := fmt.Sprintf("Welcome to private town, %s", first_name)
 
-	return test_app.Status{Status: greeting}
+	return hell_yeah_go.Status{Status: greeting}
 }

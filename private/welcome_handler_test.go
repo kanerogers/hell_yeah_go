@@ -31,7 +31,7 @@ func TestWelcomeHandler(t *testing.T) {
 	testName := "Bede"
 
 	expectedStatusString := fmt.Sprintf("Welcome to private town, %s", testName)
-	expectedStatus := test_app.Status{Status: expectedStatusString}
+	expectedStatus := hell_yeah_go.Status{Status: expectedStatusString}
 
 	user_key := &dynamodb.Key{HashKey: "abc123"}
 	user := User{"abc123", "Bede", "Overend"}
