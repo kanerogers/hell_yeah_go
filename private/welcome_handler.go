@@ -3,7 +3,7 @@ package private
 import (
 	"fmt"
 	"github.com/AdRoll/goamz/dynamodb"
-	"github.com/kanerogers/test_app/common"
+	"github.com/kanerogers/hell_yeah_go/common"
 )
 
 type WelcomeHandler struct {
