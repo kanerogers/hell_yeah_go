@@ -1,31 +1,34 @@
 package main
 
 import (
-	"github.com/gin-gonic/contrib/jwt"
+	"fmt"
+	// "github.com/gin-gonic/contrib/jwt"
 	"github.com/gin-gonic/contrib/rest"
 	"github.com/gin-gonic/gin"
 	"github.com/kanerogers/hell_yeah_go/common"
-	"github.com/kanerogers/hell_yeah_go/listing"
-	"github.com/kanerogers/hell_yeah_go/private"
+	"github.com/kanerogers/hell_yeah_go/dynamo_crud"
 )
 
 func main() {
 	router := gin.Default()
-	// welcome_handler := new(private.WelcomeHandler)
-
-	private_router := router.Group("/api/private")
-	private_router.Use(jwt.Auth(test_app.JWTKEY))
-
-	// private_router.GET("/welcome", func(c *gin.Context) {
-	// 	c.JSON(200, welcome_handler.GetStatus("Bede"))
-	// })
 
 	router.GET("/test", func(c *gin.Context) {
 		c.JSON(200, gin.H{"Hello": "World"})
 	})
 
 	api := router.Group("/api")
-	rest.CRUD(api, "/listing", new(listing.Handler))
+	// api.Use(jwt.Auth(common.JWTKEY))
+
+	resources := map[string]interface{}{
+		"listing": new(common.Listing),
+		"user":    new(common.User),
+	}
+
+	for resourceName, resource := range resources {
+		handler := dynamo_crud.NewDynomoCRUD(resourceName, resource)
+		path := fmt.Sprintf("/%s", resourceName)
+		rest.CRUD(api, path, &handler)
+	}
 
 	router.Run(":8000")
 }
