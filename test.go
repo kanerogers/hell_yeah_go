@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/contrib/jwt"
 	"github.com/gin-gonic/gin"
-	"github.com/kanerogers/test_app/common"
+	"github.com/kanerogers/hell_yeah_go/common"
 	// "github.com/kanerogers/test_app/private"
 )
 
