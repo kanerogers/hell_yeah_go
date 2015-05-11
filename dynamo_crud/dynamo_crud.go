@@ -88,5 +88,5 @@ func (dynamo *DynamoCRUD) DeleteHandler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(204, nil)
+	c.Writer.WriteHeader(204)
 }

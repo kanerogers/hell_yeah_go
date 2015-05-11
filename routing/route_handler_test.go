@@ -53,7 +53,7 @@ func TestRoutes(t *testing.T) {
 		{"GET", 200, "/api/listing/1", &common.Listing{ID: "1"}},
 		{"POST", 201, "/api/listing", &common.Listing{ID: "testing"}},
 		{"PUT", 200, "/api/listing/testing", &common.Listing{ID: "testing", Name: "Testing"}},
-		{"DELETE", 204, "/api/listing/1", nil},
+		{"DELETE", 204, "/api/listing/1", ""},
 	}
 
 	for _, testRoute := range testRoutes {
@@ -80,7 +80,7 @@ func testListing(testMethod string, testPath string, data interface{}) (response
 
 	// If it's a DELETE, we want to send back an empty body, so our "response" is "nil"
 	if testMethod == "DELETE" {
-		return actualCode, nil
+		return actualCode, r.Body.String()
 	}
 
 	// In all other cases, decode the Body as JSON into a Struct, then return it.
